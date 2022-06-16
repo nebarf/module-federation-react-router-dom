@@ -1,14 +1,9 @@
-import React from "react";
-import ReactDOM from "react-dom";
-
+import React, { Suspense } from "react";
 import "./index.css";
+import { Router } from "./routing/Router";
 
-const App = () => (
-  <div className="container">
-    <div>Name: shell</div>
-    <div>Framework: react</div>
-    <div>Language: TypeScript</div>
-    <div>CSS: Empty CSS</div>
-  </div>
+export const App = () => (
+  <Suspense fallback={<div>Loading...</div>}>
+    <Router />
+  </Suspense>
 );
-ReactDOM.render(<App />, document.getElementById("app"));
