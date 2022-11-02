@@ -10,9 +10,9 @@ export default () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Listen to navigation events dispatched inside app2 mfe.
+  // Listen to navigation events dispatched inside app1 mfe.
   useEffect(() => {
-    const app2NavigationEventHandler = (event: Event) => {
+    const app1NavigationEventHandler = (event: Event) => {
       const pathname = (event as CustomEvent<string>).detail;
       const newPathname = `${app1Basename}${pathname}`;
       if (newPathname === location.pathname) {
@@ -20,12 +20,12 @@ export default () => {
       }
       navigate(newPathname);
     };
-    window.addEventListener("[app1] navigated", app2NavigationEventHandler);
+    window.addEventListener("[app1] navigated", app1NavigationEventHandler);
 
     return () => {
       window.removeEventListener(
         "[app1] navigated",
-        app2NavigationEventHandler
+        app1NavigationEventHandler
       );
     };
   }, [location]);
