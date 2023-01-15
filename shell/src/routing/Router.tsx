@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React from "react";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -9,8 +9,6 @@ const browserRouter = createBrowserRouter(routes);
 
 export function Router() {
   return (
-    <Suspense fallback="Loading...">
-      <RouterProvider router={browserRouter} />
-    </Suspense>
+    <RouterProvider router={browserRouter} />
   );
 }

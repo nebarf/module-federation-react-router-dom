@@ -1,4 +1,4 @@
-import React, { lazy } from "react";
+import React, { lazy, Suspense } from "react";
 import { Navigate, RouteObject } from "react-router-dom";
 import { Layout } from "../components/Layout";
 import { app1RoutingPrefix, app2RoutingPrefix } from "./constants";
@@ -17,11 +17,11 @@ export const routes: RouteObject[] = [
       },
       {
         path: `/${app1RoutingPrefix}/*`,
-        element: <App1Lazy />,
+        element: <Suspense fallback="Loading App1..."><App1Lazy /></Suspense>,
       },
       {
         path: `/${app2RoutingPrefix}/*`,
-        element: <App2Lazy />,
+        element: <Suspense fallback="Loading App2..."><App2Lazy /></Suspense>,
       },
     ],
   }
